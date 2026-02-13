@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="icon" type="image/png" href="images/Accx_Logo.png" />
+<link rel="icon" type="image/png" href="image/Accx_Logo.png">
 <title>Kent Vince S. Masanegra</title>
 <style>
   body {
@@ -108,9 +108,21 @@
 
 /* Hover effect for image container */
 .gallery-grid img:hover {
-  transform: translateY(-5px) scale(1.05); /* slight lift + zoom */
+  transform: translateY(-5px) scale(1.05); /* lift + zoom */
   box-shadow: 0 10px 25px rgba(167, 111, 255, 0.6), 0 0 15px rgba(255, 222, 89, 0.5);
   border: 2px solid #a76fff; /* optional glowing border */
+}
+  
+/* Entire gallery item container hover */
+.gallery-item {
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+  transform: translateY(-5px); /* lift slightly */
+  box-shadow: 0 10px 30px rgba(167,111,255,0.6), 0 0 20px rgba(255,222,89,0.5); /* purple + yellow glow */
 }
 
   .modal {
@@ -242,8 +254,8 @@ footer{
 
 <section id="family" class="gallery-section">
   <div class="gallery-grid">
-    <img src="image/gallery/familypicture.jpg"" onclick="openModal(this)">
-    <img src="image/gallery/mother.jpg" alt="" onclick="openModal(this)">
+    <div class="gallery-item"><img src="image/gallery/familypicture.jpg" onclick="openModal(this)"></div>
+    <div class="gallery-item"><img src="image/gallery/mother.jpg" onclick="openModal(this)"></div>
   </div>
 </section>
 
