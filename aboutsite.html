@@ -72,19 +72,42 @@
   .terms-content::-webkit-scrollbar-track { background: transparent; }
 
   .section {
-    margin-bottom: 30px;
-    background: rgba(0,0,0,0.35);
-    border-left: 5px solid #a76fff;
-    border-radius: 12px;
-    padding: 20px 25px;
-    line-height: 1.7;
-    opacity: 0;
-    transform: translateX(-30px);
-    transition: all 0.6s ease;
-    box-shadow: 0 0 12px rgba(167,111,255,0.3);
-    position: relative;
-  }
-  .section.show { opacity: 1; transform: translateX(0); }
+  margin-bottom: 30px;
+  background: rgba(0,0,0,0.35);
+  border-left: 5px solid #a76fff;
+  border-radius: 12px;
+  padding: 20px 25px;
+  line-height: 1.7;
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: all 0.4s ease, transform 0.3s ease; /* transition includes transform */
+  box-shadow: 0 0 12px rgba(167,111,255,0.3);
+  position: relative;
+}
+
+/* Already applied when scroll reveals */
+.section.show { 
+  opacity: 1; 
+  transform: translateX(0); 
+}
+
+/* Hover effect */
+.section:hover {
+  transform: translateY(-10px); /* lifts the section */
+  background: rgba(56,0,152,0.35); /* subtle highlight */
+  box-shadow: 0 8px 25px rgba(167,111,255,0.6); /* glowing shadow */
+  border-left-color: #ffde59; /* optional: highlight border */
+}
+
+.section:hover h2 {
+  color: #ffde59; /* heading glows on hover */
+}
+
+.section:hover p, 
+.section:hover li {
+  color: #fff; /* text becomes brighter */
+}
+
   .section h2 { font-size: 1.4rem; color: #a76fff; margin-bottom: 10px; }
   .section p { margin-bottom: 10px; font-size: 1rem; color: #ccc; }
 
