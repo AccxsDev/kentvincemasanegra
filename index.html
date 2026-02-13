@@ -127,6 +127,46 @@
   letter-spacing: 1px;
 }
 
+/* ---------- Social Media Section ---------- */
+
+.social-section{
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-top: 60px;
+}
+
+.footer-line{
+  border: none;
+  height: 1px;
+  background: gray;
+  opacity: 0.6;
+  width: 80%;
+  margin: 0 auto 15px;
+}
+
+.social-icons{
+  display:flex;
+  justify-content:center;
+  gap:25px;
+  margin-bottom:10px;
+}
+
+.social-icons img{
+  width:28px;
+  height:28px;
+  cursor:pointer;
+  opacity:0.85;
+  transition: .3s ease;
+}
+
+/* smooth glow + pop effect */
+.social-icons img:hover{
+  opacity:1;
+  transform: scale(1.25);
+  filter: drop-shadow(0 0 8px white);
+}
+
 </style>
 </head>
 <body>
@@ -146,7 +186,6 @@
   <nav id="sidebar" class="">
     <ul>
       <li><a href="index.html">About Me</a></li>
-      <li><a href="social.html">Social Medias</a></li>
       <li><a href="gallery.html">Gallery</a></li>
     </ul>
   </nav>
@@ -159,7 +198,7 @@
           <!-- Profile Card -->
           <div class="profile-card">
             <div class="profile">
-              <a href="#" onclick="openModal('modalBryan')" class="profile-pic-link">
+              <a href="#" onclick="openModal('modalkent')" class="profile-pic-link">
                 <img src="image/kent.jpg" alt="kent">
               </a>
             </div>
@@ -203,10 +242,10 @@
 
       <!-- Modals -->
 
-<!-- Bryan Modal -->
-<div class="modal-overlay" id="modalBryan">
+<!-- kent Modal -->
+<div class="modal-overlay" id="modalkent">
   <div class="modal-box">
-    <span class="modal-close" onclick="closeModal('modalBryan')">×</span>
+    <span class="modal-close" onclick="closeModal('modalkent')">×</span>
 
     <!-- Click image inside modal → Facebook -->
     <a href="https://www.facebook.com/kent.vince.s.masanegra" target="_blank">
@@ -246,6 +285,25 @@
         </div>
       </div>
 
+<!-- Social Media Section -->
+<div class="social-section">
+  <hr class="footer-line">
+
+  <div class="social-icons">
+    <a href="https://www.facebook.com/kent.vince.s.masanegra" target="_blank">
+      <img src="image/facebook.png" alt="Facebook">
+    </a>
+
+    <a href="https://www.instagram.com/itsy.kevx" target="_blank">
+      <img src="image/instagram.png" alt="Instagram">
+    </a>
+
+    <a href="https://www.tiktok.com/@itsykenty" target="_blank">
+      <img src="image/tik-tok.png" alt="TikTok">
+    </a>
+  </div>
+</div>
+  
 <footer>
   © 2026 <strong>Accxs Creations</strong> · All rights reserved ·
   <a href="aboutsite.html" class="footer-link">About this Site</a>
