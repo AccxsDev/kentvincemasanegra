@@ -127,45 +127,47 @@
   letter-spacing: 1px;
 }
 
-/* ---------- Social Media Section ---------- */
+/* ---------- Footer Layout ---------- */
 
-.social-section{
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  margin-top: 60px;
-}
+footer{
+  position:relative;
+  z-index:1;
 
-.footer-line{
-  border: none;
-  height: 1px;
-  background: gray;
-  opacity: 0.6;
-  width: 80%;
-  margin: 0 auto 15px;
-}
-
-.social-icons{
   display:flex;
   justify-content:center;
-  gap:25px;
-  margin-bottom:10px;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+
+  text-align:center;
+  color:#aaa;
+  font-size:0.9rem;
+  margin-top:60px;
+  margin-bottom:30px;
 }
 
-.social-icons img{
-  width:28px;
-  height:28px;
+/* social icons beside text */
+.footer-socials{
+  display:flex;
+  gap:10px;
+  margin-left:8px;
+}
+
+.footer-socials img{
+  width:18px;
+  height:18px;
+  opacity:0.8;
   cursor:pointer;
-  opacity:0.85;
-  transition: .3s ease;
+  transition:.25s;
 }
 
-/* smooth glow + pop effect */
-.social-icons img:hover{
+/* glow hover effect */
+.footer-socials img:hover{
   opacity:1;
-  transform: scale(1.25);
-  filter: drop-shadow(0 0 8px white);
+  transform:scale(1.25);
+  filter: drop-shadow(0 0 6px white);
 }
+
 
 </style>
 </head>
@@ -228,7 +230,7 @@
                 </div>
                 <div>
                   <a href="#" onclick="openModal('modalMother')">
-                    <img src="image/mother.png" alt="Lea S. Masanegra">
+                    <img src="image/mother.jpg" alt="Lea S. Masanegra">
                   </a>
                   <p>Lea S. Masanegra - Mother</p>
                 </div>
@@ -268,7 +270,8 @@
         <div class="modal-box">
           <span class="modal-close" onclick="closeModal('modalFather')">×</span>
           <a href="https://www.facebook.com/profile.php?id=61576961716018" target="_blank">
-          <img src="image/father.png" alt="Edgar D. Masanegra" style="width:150px;height:150px;border-radius:50%;display:block;margin:0 auto;">
+            <img src="image/father.png" alt="Edgar D. Masanegra" style="width:150px;height:150px;border-radius:50%;display:block;margin:0 auto;">
+          </a>
           <h3>Edgar D. Masanegra</h3>
           <p>He is the foundation of the family, the quiet strength that holds everything together, and the steady hands that guide, protect, and provide, truly embodying what it means to be a loving and hardworking dad. His sacrifices, long days, and endless efforts show how deeply he cares, always putting his family first and making sure everyone feels safe, supported, and valued. Even when things get tough, he never gives up, and that strength inspires everyone around him. Please remember that everything he does matters more than words can say, and his love, dedication, and presence are the greatest gifts his family could ever have.</p>
         </div>
@@ -285,11 +288,11 @@
         </div>
       </div>
 
-<!-- Social Media Section -->
-<div class="social-section">
-  <hr class="footer-line">
+<footer>
+  © 2026 <strong>Accxs Creations</strong> · All rights reserved ·
+  <a href="aboutsite.html" class="footer-link">About this Site</a>
 
-  <div class="social-icons">
+  <span class="footer-socials">
     <a href="https://www.facebook.com/kent.vince.s.masanegra" target="_blank">
       <img src="image/facebook.png" alt="Facebook">
     </a>
@@ -301,13 +304,9 @@
     <a href="https://www.tiktok.com/@itsykenty" target="_blank">
       <img src="image/tik-tok.png" alt="TikTok">
     </a>
-  </div>
-</div>
-  
-<footer>
-  © 2026 <strong>Accxs Creations</strong> · All rights reserved ·
-  <a href="aboutsite.html" class="footer-link">About this Site</a>
+  </span>
 </footer>
+
 
 <script>
   // Sidebar toggle
