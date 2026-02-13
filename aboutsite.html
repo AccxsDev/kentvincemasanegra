@@ -176,7 +176,21 @@ footer{
   transform:scale(1.25);
   filter: drop-shadow(0 0 6px white);
 }
-  
+
+/* Hover pop-up effect for content cards */
+.content-card .profile-card,
+.content-card .family-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform-origin: center center;
+}
+
+.content-card .profile-card:hover,
+.content-card .family-card:hover {
+  transform: translateY(-10px) scale(1.03); /* moves up slightly and grows */
+  box-shadow: 0 20px 40px rgba(167, 111, 255, 0.5); /* glowing shadow */
+  border-color: #a76fff; /* optional: make border glow on hover */
+}
+
 </style>
 </head>
 <body>
@@ -195,40 +209,53 @@ footer{
 
   <div class="terms-content">
     <div class="section">
-      <h2>Purpose of This Website</h2>
-      <p>This website is a static personal showcase created for demonstration or exam purposes. It displays my profile, projects, galleries, social media links, and contact information.</p>
-    </div>
+  <h2>Purpose of This Site</h2>
+  <p>Welcome to the personal portfolio and gallery of <strong>Kent Vince S. Masanegra</strong>. 
+     This website is designed to showcase personal information, family, and creative works 
+     with interactive and visually engaging features.</p>
+</div>
 
-    <div class="section">
-      <h2>Features Included</h2>
-      <p>The website demonstrates the following interactive and visual features:</p>
-      <ul>
-        <li>Animated background with a moving radial gradient and starfield effects.</li>
-        <li>Mouse ripple effect that follows cursor movements.</li>
-        <li>FAQ-style cards with expand/collapse functionality.</li>
-        <li>Back button for navigation to previous page.</li>
-        <li>Modals, popups, or tooltips to showcase project details (if implemented).</li>
-        <li>Neon/glow effects on headings and section borders.</li>
-      </ul>
-    </div>
+<div class="section">
+  <h2>Key Features</h2>
+  <ul>
+    <li>Interactive Profile Section with modals linking to Facebook.</li>
+    <li>Family Showcase with detailed descriptions and social links.</li>
+    <li>Gallery Section with responsive grid, modals, and image download option.</li>
+    <li>Animated Backgrounds including starfield and ripple effects.</li>
+    <li>Sidebar navigation (hamburger menu) for About Me and Gallery pages.</li>
+    <li>Modals for images and profile details without leaving the page.</li>
+    <li>Responsive Design adapting to mobile and desktop screens.</li>
+    <li>Footer with social links and "About This Site" link.</li>
+  </ul>
+</div>
 
-    <div class="section">
-      <h2>Purpose of Each Element</h2>
-      <p>The site is designed to demonstrate the following skills and techniques:</p>
-      <ul>
-        <li>HTML structure for sections, modals, and content display.</li>
-        <li>CSS for gradients, glow animations, responsive layout, and hover effects.</li>
-        <li>JavaScript for FAQ toggles, animations, canvas effects (stars, meteors, ripples), and scroll reveal.</li>
-        <li>Static hosting of media such as images, QR codes, and project thumbnails.</li>
-        <li>User interaction examples like clicking, hovering, and scrolling animations.</li>
-      </ul>
-    </div>
+<div class="section">
+  <h2>Purpose of Each Element</h2>
+  <ul>
+    <li>HTML structure for sections, modals, and content layout.</li>
+    <li>CSS for hover effects, glow animations, gradients, and responsive styling.</li>
+    <li>JavaScript for interactive elements: modals, scroll reveal, canvas animations.</li>
+    <li>Static hosting of media like images, gallery thumbnails, and profile pictures.</li>
+    <li>User interactions like hovering, clicking, scrolling animations, and back navigation.</li>
+  </ul>
+</div>
 
-    <div class="section">
-      <h2>Note</h2>
-      <p>This site does not collect data, track users, or store any personal information. It is purely a **demonstration of web development techniques** for exam or portfolio purposes.</p>
-    </div>
-  </div>
+<div class="section">
+  <h2>How to Navigate</h2>
+  <ol>
+    <li>Click the hamburger menu to open the sidebar and navigate to About Me or Gallery.</li>
+    <li>Hover over profile/family cards to see pop-up scale and glow effects.</li>
+    <li>Click profile or family images to open modals with more info and social links.</li>
+    <li>Click images in the Gallery section to view full size and download them.</li>
+    <li>Enjoy the starfield and ripple animations in the background while browsing.</li>
+  </ol>
+</div>
+
+<div class="section">
+  <h2>Note</h2>
+  <p>This site is purely a demonstration of web development techniques. 
+     No personal data is collected or stored.</p>
+</div>
 
   <footer>
     © 2026 <strong>Accxs Creations</strong> · All rights reserved ·
