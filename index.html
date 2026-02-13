@@ -6,9 +6,6 @@
 <title>Kent Vince S. Masanegra | Portfolio</title>
 <link rel="icon" type="image/png" href="image/Accx_Logo.png">
 
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500&family=The+Seasons&display=swap" rel="stylesheet">
-
 <style>
 * { box-sizing: border-box; margin:0; padding:0; }
 
@@ -16,28 +13,31 @@ body {
   font-family: 'Work Sans', sans-serif;
   background-color: #000;
   color: #fff;
+  overflow: hidden; /* no scroll */
 }
 
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 50px; /* smaller header */
+  padding: 10px 40px;
   background: #000;
   border-bottom: 1px solid #111;
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 1000;
+  width: 100%;
+  height: 60px;
+  z-index: 10;
 }
 
 header h1 {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: bold;
 }
 
 nav ul {
   display: flex;
-  gap: 30px;
+  gap: 25px;
   list-style: none;
 }
 
@@ -52,28 +52,46 @@ nav ul li a:hover {
   transform: scale(1.2);
 }
 
-/* ---------- Intro Section ---------- */
-.intro-section {
+/* ---------- Main Section ---------- */
+.main-section {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 50px 5%;
-  min-height: calc(100vh - 60px);
-  gap: 50px;
-  position: relative;
+  width: 100vw;
+  height: 100vh; /* full viewport height */
 }
 
+.intro-image {
+  flex: 1;
+  position: relative;
+  background: url('image/kent.jpg') center center / cover no-repeat;
+}
+
+.intro-image::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 60px; /* blurred left edge */
+  height: 100%;
+  background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0));
+  pointer-events: none;
+}
+
+/* Intro text overlay on left */
 .intro-text {
-  max-width: 500px;
+  position: absolute;
+  top: 50%;
+  left: 50px; /* margin from left */
+  transform: translateY(-50%);
   display: flex;
   flex-direction: column;
   gap: 15px;
-  font-family: 'Work Sans', sans-serif;
+  max-width: 500px;
+  z-index: 5;
 }
 
 /* MY box */
 .my-box {
-  font-family: 'The Seasons', cursive;
+  font-family: 'Times New Roman', serif;
   font-size: 4rem;
   font-weight: bold;
   border: 3px solid #fff;
@@ -93,7 +111,7 @@ nav ul li a:hover {
 
 /* Portfolio */
 .portfolio {
-  font-family: 'The Seasons', cursive;
+  font-family: 'Times New Roman', serif;
   font-size: 5rem;
   margin-top: 10px;
 }
@@ -102,37 +120,13 @@ nav ul li a:hover {
 .intro-text p {
   font-size: 1.1rem;
   color: #ccc;
+  max-width: 500px;
   margin-top: 20px;
-}
-
-/* ---------- Portrait Image ---------- */
-.intro-image {
-  flex: 1 1 600px;
-  position: relative;
-}
-
-.intro-image img {
-  width: 100%;
-  height: 90vh; /* taller, overlaps footer */
-  display: block;
-  object-fit: cover;
-}
-
-/* Left side blur overlay */
-.intro-image::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 60px; /* width of blurred vertical line */
-  height: 100%;
-  background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0));
-  pointer-events: none;
 }
 
 /* ---------- Footer ---------- */
 footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   color: #aaa;
@@ -142,6 +136,7 @@ footer {
   align-items: center;
   gap: 15px;
   border-top: 1px solid #444; /* gray line */
+  z-index: 10;
 }
 
 .footer-link {
@@ -175,30 +170,19 @@ footer {
 
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
-  .intro-section {
+  .main-section {
     flex-direction: column;
-    text-align: center;
   }
 
   .intro-text {
-    align-items: center;
-  }
-
-  .intro-text p {
+    position: static;
+    transform: none;
     text-align: center;
-  }
-
-  .intro-image {
-    width: 100%;
-    max-width: 400px;
-  }
-
-  .intro-image::before {
-    width: 30px;
+    margin: 30px;
   }
 
   .portfolio {
-    font-size: 4rem;
+    font-size: 3rem;
   }
 
   .my-box {
@@ -226,16 +210,13 @@ footer {
   </nav>
 </header>
 
-<section class="intro-section">
+<section class="main-section">
+  <div class="intro-image"></div>
   <div class="intro-text">
     <div class="my-box">MY</div>
     <div class="dakila">11-Dakila</div>
     <div class="portfolio">Portfolio</div>
     <p>Hello! My name is Kent Vince S. Masanegra, a Grade 11 student who is passionate about learning and improving my skills. I am interested in using technology for schoolwork, communication, and creativity. Through ICT, I can easily research, create projects, and connect with others. I am continuously learning how to use technology responsibly and wisely. My goal is to use digital tools to help me succeed in my studies and future career.</p>
-  </div>
-
-  <div class="intro-image">
-    <img src="image/kent.jpg" alt="Kent Vince S. Masanegra">
   </div>
 </section>
 
