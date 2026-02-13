@@ -1,573 +1,268 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kent Vince S. Masanegra | Portfolio</title>
 <link rel="icon" type="image/png" href="image/Accx_Logo.png">
-<title>Kent Vince S. Masanegra</title>
 <style>
-  /* ---------- Body & Background ---------- */
-  body {
+  /* ---------- Global Styles ---------- */
+  * {
+    box-sizing: border-box;
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: radial-gradient(circle at top left, #380098, black);
-    background-size: cover;
-    background-attachment: fixed;
-    color: white;
-    overflow-x: hidden;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #000;
+    color: #fff;
+    line-height: 1.5;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
   }
 
   /* ---------- Header ---------- */
   header {
-    display:flex; justify-content:space-between; align-items:center;
-    padding:15px; background: rgba(0,0,0,0.5);
-    position: sticky; top:0; z-index:1002;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: #111;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #222;
   }
+
   header h1 {
-    font-size:1.8rem; margin:0; color:#fff;
-    text-shadow:0 0 5px #ffffff80,0 0 10px #ffffff40,0 0 20px #a76fff50;
-    animation:flickerText 3s infinite;
-  }
-  @keyframes flickerText {
-    0%,19%,21%,23%,25%,54%,56%,100%{opacity:1; text-shadow:0 0 6px #fff,0 0 10px #fff,0 0 20px #a76fff80,0 0 30px #38009890;}
-    20%,22%,55%{opacity:0.7; text-shadow:0 0 3px #fff,0 0 8px #a76fff40;}
-    24%{opacity:0.4; text-shadow:0 0 2px #fff,0 0 5px #a76fff20;}
-  }
-  .hamburger { font-size:1.8rem; cursor:pointer; user-select:none; }
-
-  /* ---------- Sidebar ---------- */
-  #sidebarOverlay {
-    position: fixed; top:0; left:0; width:100%; height:100%;
-    background: rgba(0,0,0,0.4); display:none; z-index:1000;
-  }
-  #sidebar {
-    width:220px; max-width:80%; background: rgba(0,0,0,0.9);
-    color:white; position:fixed; top:0; right:-220px; height:100%;
-    padding-top:60px; transition:right 0.3s ease; z-index:1001;
-  }
-  #sidebar.open{right:0;}
-  #sidebar ul{list-style:none; padding:0; margin:0;}
-  #sidebar ul li a{
-    display:block; padding:12px 20px; color:white; text-decoration:none; text-align:left;
-  }
-  #sidebar ul li a:hover{background: rgba(255,255,255,0.15);}
-
-  /* ---------- Content Cards ---------- */
-  #blur-container {
-    transition: filter 0.3s ease;
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
   }
 
-  .content-card{padding:20px; max-width:1000px; margin:20px auto; position:relative; z-index:1; text-align:center;}
-  .profile-card, .family-card{
-    background: rgba(255,255,255,0.05); border:2px solid #380098;
-    border-radius:15px; padding:20px; box-shadow:0 0 10px rgba(56,0,152,0.6); margin-bottom:20px;
+  nav ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
   }
-  .profile-pic-link img{width:150px;height:150px;border-radius:50%;border:3px solid white;object-fit:cover;margin:0 auto;display:block;}
 
-  /* Profile info: left align text */
-.profile-info p {
-  margin: 8px 0;
-  font-size: 1rem;
-  text-align: left;  /* changed from center to left */
-}
-
-  /* Hover effect on circular images */
-.profile-pic-link img,
-.family-list img {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.profile-pic-link img:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 25px 7px rgba(167, 111, 255, 0.9);
-}
-
-.family-list img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 15px 4px rgba(255, 222, 89, 0.7);
-}
-
-  .family h3{margin-bottom:15px;}
-  .family-list{display:flex; justify-content:center; flex-wrap:wrap; gap:40px; margin-bottom:20px;}
-  .family-list div{text-align:center; flex:1 1 200px; max-width:200px;}
-  .family-list img{width:100px; height:100px; border-radius:50%; border:2px solid white; object-fit:cover;}
-  .family-list p{font-weight:bold;margin-top:8px;}
-
-  /* ---------- Modals ---------- */
-  .modal-overlay {
-    display:none; position:fixed; top:0; left:0; width:100%; height:100%;
-    background: rgba(0,0,0,0.7); justify-content:center; align-items:center; z-index:2000;
+  nav ul li a {
+    font-size: 1rem;
+    transition: color 0.3s ease;
   }
-  .modal-box {
-    background: rgba(0,0,0,0.9); padding:20px; border-radius:15px;
-    max-width:500px; width:90%; color:white; text-align:center;
-    box-shadow:0 0 20px #a76fff; position:relative;
-  }
-  .modal-close {position:absolute; top:10px; right:15px; font-size:1.5rem; cursor:pointer;}
 
-  body.modal-open #blur-container {
-    filter: blur(6px);
+  nav ul li a:hover {
+    color: #a76fff;
   }
-  body.modal-open {
+
+  /* ---------- Intro Section ---------- */
+  .intro-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 60px 5%;
+    min-height: 80vh;
+    position: relative;
     overflow: hidden;
   }
 
-  /* ---------- Background canvases ---------- */
-  #starsCanvas, #rippleCanvas{position:fixed; top:0; left:0; width:100vw; height:100vh; pointer-events:none;}
-  #starsCanvas{z-index:0;} #rippleCanvas{z-index:0;}
+  .intro-text {
+    max-width: 600px;
+    z-index: 1;
+  }
+
+  .intro-text h2 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #fff;
+  }
+
+  .intro-text h3 {
+    font-size: 2rem;
+    font-weight: normal;
+    margin-top: 10px;
+    color: #a76fff;
+  }
+
+  .intro-text h1 {
+    font-size: 4rem;
+    font-weight: bold;
+    text-decoration: underline;
+    margin-top: 15px;
+    color: #fff;
+  }
+
+  .intro-text p {
+    font-size: 1.1rem;
+    margin-top: 20px;
+    color: #ccc;
+  }
+
+  /* ---------- Portrait Image ---------- */
+  .intro-image {
+    flex: 1 1 400px;
+    max-width: 500px;
+    position: relative;
+  }
+
+  .intro-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 20px;
+    object-fit: cover;
+    filter: blur(5px);
+  }
+
+  .intro-image img::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+  }
+
+  /* ---------- Overlay actual image sharp part ---------- */
+  .intro-image .sharp {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background: url('image/kent.jpg') no-repeat right center;
+    background-size: cover;
+    border-radius: 20px;
+  }
 
   /* ---------- Footer ---------- */
-  footer{position:relative; z-index:1; text-align:center; color:#aaa; font-size:0.9rem; margin-top:60px; margin-bottom:30px; opacity:0.9; transition: opacity 0.3s ease, color 0.3s ease;}
-  footer:hover{opacity:1;color:gold;text-shadow:0 0 8px gold;}
+  footer {
+    background: #111;
+    text-align: center;
+    color: #aaa;
+    font-size: 0.9rem;
+    padding: 25px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    border-top: 1px solid #222;
+  }
 
-.footer-link {
-  color: #aaa;
-  text-decoration: none;
-  transition: color 0.3s ease, text-shadow 0.3s ease;
-}
+  .footer-link {
+    color: #aaa;
+    transition: color 0.3s ease;
+  }
 
-.footer-link:hover {
-  color: gold;
-  text-shadow: 0 0 8px gold;
-  text-decoration: underline;
-}
+  .footer-link:hover {
+    color: #a76fff;
+    text-decoration: underline;
+  }
 
-.profile-info a {
-  color: white;
-  text-decoration: none;
-}
+  .footer-socials {
+    display: flex;
+    gap: 10px;
+  }
 
-.profile-info a:hover {
-  text-decoration: underline;
-}
+  .footer-socials img {
+    width: 20px;
+    height: 20px;
+    opacity: 0.8;
+    transition: 0.3s ease;
+  }
 
-.profile-name{
-  font-size: 1.9rem;
-  font-weight: bold;
-  margin-bottom: 12px;
-  text-align: center;
-  color: white;
-  letter-spacing: 1px;
-}
+  .footer-socials img:hover {
+    opacity: 1;
+    transform: scale(1.3);
+    filter: drop-shadow(0 0 6px #a76fff);
+  }
 
-/* ---------- Circular Image Hover ---------- */
-.profile-pic-link img,
-.family-list img {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 3px solid white; /* optional if you want a border */
-}
-.profile-pic-link img:hover,
-.family-list img:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 25px 7px rgba(167, 111, 255, 0.8), 0 0 15px 3px rgba(255, 222, 89, 0.5);
-  cursor: pointer;
-}
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px) {
+    .intro-section {
+      flex-direction: column-reverse;
+      text-align: center;
+      gap: 40px;
+    }
 
-/* ---------- Card Hover Effect ---------- */
-.profile-card:hover,
-.family-card:hover,
-.education-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 30px rgba(167, 111, 255, 0.5), 0 0 20px rgba(255, 222, 89, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+    .intro-text h2 {
+      font-size: 2.5rem;
+    }
 
-/* ---------- Education Card Design ---------- */
-.education-card {
-  background: linear-gradient(145deg, #380098, #5c00cc);
-  border: 2px solid #a76fff;
-  border-radius: 20px;
-  padding: 25px;
-  margin-bottom: 20px;
-  text-align: center;
-  color: white;
-  box-shadow: 0 0 15px rgba(167,111,255,0.4);
-}
+    .intro-text h3 {
+      font-size: 1.8rem;
+    }
 
-.education-card h3 {
-  font-size: 1.7rem;
-  margin-bottom: 20px;
-  letter-spacing: 1px;
-  text-shadow: 0 0 5px #fff, 0 0 10px #a76fff80;
-}
+    .intro-text h1 {
+      font-size: 3rem;
+    }
 
-/* Individual Education Entries */
-.education-entry {
-  background: rgba(255, 255, 255, 0.05);
-  margin: 12px 0;
-  padding: 15px 20px;
-  border-radius: 12px;
-  border-left: 4px solid #a76fff;
-  text-align: left;
-  font-size: 1.05rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.education-entry:hover {
-  transform: translateX(5px);
-  box-shadow: 0 8px 20px rgba(167,111,255,0.4);
-}
-.education-entry strong {
-  color: #ffd600;
-  margin-right: 8px;
-}
-.education-entry span {
-  color: #ccc;
-  font-style: italic;
-}
+    .intro-text p {
+      font-size: 1rem;
+    }
 
-/* ---------- Footer Layout ---------- */
-
-footer{
-  position:relative;
-  z-index:1;
-
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:10px;
-  flex-wrap:wrap;
-
-  text-align:center;
-  color:#aaa;
-  font-size:0.9rem;
-  margin-top:60px;
-  margin-bottom:30px;
-}
-
-/* social icons beside text */
-.footer-socials{
-  display:flex;
-  gap:10px;
-  margin-left:8px;
-}
-
-.footer-socials img{
-  width:18px;
-  height:18px;
-  opacity:0.8;
-  cursor:pointer;
-  transition:.25s;
-}
-
-/* glow hover effect */
-.footer-socials img:hover{
-  opacity:1;
-  transform:scale(1.25);
-  filter: drop-shadow(0 0 6px white);
-}
-
-.education-card {
-  background: rgba(255,255,255,0.05);
-  border: 2px solid #380098;
-  border-radius: 15px;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(56,0,152,0.6);
-  margin-bottom: 20px;
-  text-align: center;
-}
-.education-card h3 {
-  text-align: center;   /* keeps title centered */
-  font-weight: normal;  /* removes bold */
-  color: #fff;
-  font-size: 1.5rem;
-  margin-bottom: 15px;
-}
-
-/* Education card: left align text */
-.education-card p {
-  margin: 12px 0;
-  font-size: 1.05rem;
-  color: #ddd;
-  text-align: left;  /* added left alignment */
-}
-
-.school-status.graduated {
-  color: #ffd600;  /* gold-ish color for graduated */
-  font-style: italic;
-}
-
-.school-status.enrolled {
-  color: #00ffcc;  /* greenish color for currently enrolled */
-  font-style: italic;
-}
+    .intro-image .sharp {
+      width: 100%;
+      height: 300px;
+      background-position: center;
+    }
+  }
 
 </style>
 </head>
 <body>
-<canvas id="starsCanvas" width="273" height="740"></canvas>
-<canvas id="rippleCanvas" width="273" height="740"></canvas>
 
   <!-- Header -->
   <header>
-    <h1>About Me</h1>
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
+    <h1>Kent Vince S. Masanegra</h1>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Resume</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <!-- Sidebar Overlay -->
-  <div id="sidebarOverlay" onclick="closeMenu()" style="display: none;"></div>
-
-  <!-- Sidebar -->
-  <nav id="sidebar" class="">
-    <ul>
-      <li><a href="index.html">About Me</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-    </ul>
-  </nav>
-
-  <!-- Wrap Main Content to Blur -->
-  <div id="blur-container">
-    <div id="mainContent">
-      <main>
-        <section id="about" class="content-card">
-          <!-- Profile Card -->
-          <div class="profile-card">
-            <div class="profile">
-              <a href="#" onclick="openModal('modalkent')" class="profile-pic-link">
-                <img src="image/kent.jpg" alt="kent">
-              </a>
-            </div>
-            <div class="profile-info">
-              <h2 class="profile-name">Kent Vince S. Masanegra</h2>
-              
-              <p><strong>Address:</strong><a href="https://maps.app.goo.gl/LMtt7Gds7ZBZe7w76" target="_blank">    Purok 20 Sanggilangan Gem Village, Ma-a, Davao City  </a></p>
-              <p><strong>Mobile:</strong> 09463205327</p>
-              <p><strong>Email:</strong> <a href="mailto:Masanegrakentvinces@gmail.com">Masanegrakentvinces@gmail.com</a></p>
-              <p><strong>Date of Birth:</strong> April 03, 2009</p>
-              <p><strong>Citizenship:</strong> Filipino</p>
-              <p><strong>Religion:</strong> Born Again</p>
-              <p><strong>Gender:</strong> Male</p>
-            </div>
-          </div>
-
-<!-- Education Card -->
-<div class="education-card content-card">
-  <h3>Educational Background</h3>
-
-  <p>
-    <span class="school-name">Senior High School: Southpoint School</span> — 
-    <span class="school-status enrolled">Currently Enrolled</span>
-  </p>
-
-  <p>
-    <span class="school-name">Junior High School: Southpoint School</span> — 
-    <span class="school-status graduated">Graduated 2024-2025</span>
-  </p>
-
-  <p>
-    <span class="school-name">Elementary School: Kapitan Thomas Mounteverde Central Elementary School</span> — 
-    <span class="school-status graduated">Graduated 2019-2020</span>
-  </p>
-</div>
-          
-          <!-- Family Card -->
-          <div class="family-card">
-            <div class="family">
-              <h3>Family Members</h3>
-              <div class="family-list">
-                <div>
-                  <a href="#" onclick="openModal('modalFather')">
-                    <img src="image/father.png" alt="Edgar D. Masanegra">
-                  </a>
-                  <p>Edgar D. Masanegra - Father</p>
-                </div>
-                <div>
-                  <a href="#" onclick="openModal('modalMother')">
-                    <img src="image/mother.jpg" alt="Lea S. Masanegra">
-                  </a>
-                  <p>Lea S. Masanegra - Mother</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
+  <!-- Intro Section -->
+  <section class="intro-section">
+    <div class="intro-text">
+      <h2>My</h2>
+      <h3>11-Dakila</h3>
+      <h1>Portfolio</h1>
+      <p>Hello! My name is Kent Vince S. Masanegra, a Grade 11 student who is passionate about learning and improving my skills. I am interested in using technology for schoolwork, communication, and creativity. Through ICT, I can easily research, create projects, and connect with others. I am continuously learning how to use technology responsibly and wisely. My goal is to use digital tools to help me succeed in my studies and future career.</p>
     </div>
-  </div>
+    <div class="intro-image">
+      <img src="image/kent.jpg" alt="Kent Vince S. Masanegra">
+      <div class="sharp"></div>
+    </div>
+  </section>
 
-      <!-- Modals -->
+  <!-- Footer -->
+  <footer>
+    © 2026 <strong>Accxs Creations</strong> · All rights reserved ·
+    <a href="aboutsite.html" class="footer-link">About this Site</a>
+    <div class="footer-socials">
+      <a href="https://www.facebook.com/kent.vince.s.masanegra" target="_blank">
+        <img src="image/facebook.png" alt="Facebook">
+      </a>
+      <a href="https://www.instagram.com/itsy.kevx" target="_blank">
+        <img src="image/instagram.png" alt="Instagram">
+      </a>
+      <a href="https://www.tiktok.com/@itsykenty" target="_blank">
+        <img src="image/tik-tok.png" alt="TikTok">
+      </a>
+    </div>
+  </footer>
 
-<!-- kent Modal -->
-<div class="modal-overlay" id="modalkent">
-  <div class="modal-box">
-    <span class="modal-close" onclick="closeModal('modalkent')">×</span>
-
-    <!-- Click image inside modal → Facebook -->
-    <a href="https://www.facebook.com/kent.vince.s.masanegra" target="_blank">
-      <img src="image/kent.jpg" alt="Kent Vince S. Masanegra" style="width:150px;height:150px;border-radius:50%;display:block;margin:0 auto;cursor:pointer;">
-    </a>
-
-    <h3>Kent Vince S. Masanegra</h3>
-
-    <p>
-      Hello! My name is Kent Vince S. Masanegra, a Grade 11 student who is passionate about learning and improving my skills. I am interested in using technology for schoolwork, communication, and creativity. Through ICT, I can easily research, create projects, and connect with others. I am continuously learning how to use technology responsibly and wisely. My goal is to use digital tools to help me succeed in my studies and future career.
-    </p>
-  </div>
-</div>
- 
-      <div class="modal-overlay" id="modalFather">
-        <div class="modal-box">
-          <span class="modal-close" onclick="closeModal('modalFather')">×</span>
-          <a href="https://www.facebook.com/profile.php?id=61576961716018" target="_blank">
-            <img src="image/father.png" alt="Edgar D. Masanegra" style="width:150px;height:150px;border-radius:50%;display:block;margin:0 auto;">
-          </a>
-          <h3>Edgar D. Masanegra</h3>
-          <p>He is the foundation of the family, the quiet strength that holds everything together, and the steady hands that guide, protect, and provide, truly embodying what it means to be a loving and hardworking dad. His sacrifices, long days, and endless efforts show how deeply he cares, always putting his family first and making sure everyone feels safe, supported, and valued. Even when things get tough, he never gives up, and that strength inspires everyone around him. Please remember that everything he does matters more than words can say, and his love, dedication, and presence are the greatest gifts his family could ever have.</p>
-        </div>
-      </div>
-
-      <div class="modal-overlay" id="modalMother">
-        <div class="modal-box">
-          <span class="modal-close" onclick="closeModal('modalMother')">×</span>
-          <a href="https://www.facebook.com/star.brenda.2024" target="_blank">
-            <img src="image/mother.jpg" alt="Lea S. Masanegra" style="width:150px;height:150px;border-radius:50%;display:block;margin:0 auto;">
-          </a>
-          <h3>Lea S. Masanegra</h3>
-          <p>My mother is the heart of the home, the gentle strength that keeps the family together, and she truly reflects that every single day through her hard work, kindness, and unwavering faith in Jesus Christ. With love in her actions and devotion in her heart, she serves her family selflessly, always putting their needs before her own while trusting God to guide her steps. Her dedication, patience, and strong spirit inspire everyone around her, making her not only a hardworking mother but also a beautiful example of faith, love, and grace.</p>
-        </div>
-      </div>
-
-<footer>
-  © 2026 <strong>Accxs Creations</strong> · All rights reserved ·
-  <a href="aboutsite.html" class="footer-link">About this Site</a>
-
-  <span class="footer-socials">
-    <a href="https://www.facebook.com/kent.vince.s.masanegra" target="_blank">
-      <img src="image/facebook.png" alt="Facebook">
-    </a>
-
-    <a href="https://www.instagram.com/itsy.kevx" target="_blank">
-      <img src="image/instagram.png" alt="Instagram">
-    </a>
-
-    <a href="https://www.tiktok.com/@itsykenty" target="_blank">
-      <img src="image/tik-tok.png" alt="TikTok">
-    </a>
-  </span>
-</footer>
-
-
-<script>
-  // Sidebar toggle
-  function toggleMenu(){
-    const sidebar = document.getElementById("sidebar");
-    const overlay = document.getElementById("sidebarOverlay");
-    sidebar.classList.toggle("open");
-    overlay.style.display = sidebar.classList.contains("open") ? "block":"none";
-  }
-  function closeMenu(){
-    document.getElementById("sidebar").classList.remove("open");
-    document.getElementById("sidebarOverlay").style.display="none";
-  }
-
-  // Modal logic
-  function openModal(id){
-    document.getElementById(id).style.display='flex';
-    document.body.classList.add('modal-open');
-  }
-  function closeModal(id){
-    document.getElementById(id).style.display='none';
-    document.body.classList.remove('modal-open');
-  }
-  document.querySelectorAll('.modal-overlay').forEach(modal=>{
-    modal.addEventListener('click', e=>{
-      if(e.target===modal) closeModal(modal.id)
-    });
-  });
-
-    // Starfield + Meteor
-    const starsCanvas = document.getElementById('starsCanvas');
-    const starsCtx = starsCanvas.getContext('2d');
-    let stars = [], meteor = null;
-
-    function resizeStarsCanvas() {
-      starsCanvas.width = window.innerWidth;
-      starsCanvas.height = window.innerHeight;
-      generateStars();
-    }
-
-    function generateStars() {
-      stars = [];
-      for (let i=0; i<200; i++) {
-        stars.push({x:Math.random()*starsCanvas.width, y:Math.random()*starsCanvas.height, alpha:Math.random()*0.7+0.3, radius:Math.random()*1.5+0.5, flickerSpeed:Math.random()*0.05+0.02});
-      }
-    }
-
-    function drawMeteor() {
-      if (!meteor) return;
-      starsCtx.save();
-      const grad = starsCtx.createLinearGradient(meteor.x, meteor.y, meteor.x - meteor.vx*10, meteor.y - meteor.vy*10);
-      grad.addColorStop(0, `rgba(255,255,255,${meteor.alpha})`);
-      grad.addColorStop(1, `rgba(255,255,255,0)`);
-      starsCtx.strokeStyle = grad;
-      starsCtx.lineWidth = 2;
-      starsCtx.beginPath();
-      starsCtx.moveTo(meteor.x, meteor.y);
-      starsCtx.lineTo(meteor.x - meteor.vx * 20, meteor.y - meteor.vy * 20);
-      starsCtx.stroke();
-      starsCtx.restore();
-    }
-
-    function animateStars() {
-      starsCtx.clearRect(0,0,starsCanvas.width,starsCanvas.height);
-      stars.forEach(star => {
-        star.alpha += star.flickerSpeed*(Math.random()<0.5?-1:1);
-        star.alpha = Math.min(1, Math.max(0.1, star.alpha));
-        starsCtx.beginPath();
-        starsCtx.arc(star.x, star.y, star.radius, 0, Math.PI*2);
-        starsCtx.fillStyle = `rgba(255,255,255,${star.alpha})`;
-        starsCtx.fill();
-      });
-      if (meteor) {
-        meteor.x += meteor.vx;
-        meteor.y += meteor.vy;
-        meteor.alpha -= 0.01;
-        drawMeteor();
-        if (meteor.alpha<=0 || meteor.x<-50 || meteor.y>starsCanvas.height+50) {
-          meteor=null;
-          setTimeout(spawnMeteor, Math.random()*5000+3000);
-        }
-      }
-      requestAnimationFrame(animateStars);
-    }
-
-    function spawnMeteor() {
-      meteor={x:Math.random()*starsCanvas.width,y:-20,vx:-(Math.random()*4+2),vy:Math.random()*2+2,alpha:1};
-    }
-
-    window.addEventListener('resize', resizeStarsCanvas);
-    resizeStarsCanvas();
-    animateStars();
-    setTimeout(spawnMeteor,3000);
-
-    // Ripple effect
-    const rippleCanvas = document.getElementById('rippleCanvas');
-    const rippleCtx = rippleCanvas.getContext('2d');
-    let ripples=[];
-    function resizeRippleCanvas() { rippleCanvas.width=window.innerWidth; rippleCanvas.height=window.innerHeight; }
-    window.addEventListener('resize', resizeRippleCanvas);
-    resizeRippleCanvas();
-    window.addEventListener('mousemove', (e)=>{
-      ripples.push({x:e.clientX, y:e.clientY, radius:0, alpha:0.3, lineWidth:1+Math.random()});
-      if(ripples.length>20) ripples.shift();
-    });
-    function animateRipples() {
-      rippleCtx.clearRect(0,0,rippleCanvas.width,rippleCanvas.height);
-      ripples.forEach((r,i)=>{
-        r.radius+=1.5;
-        r.alpha-=0.007;
-        if(r.alpha<=0){ ripples.splice(i,1); return; }
-        rippleCtx.beginPath();
-        rippleCtx.arc(r.x,r.y,r.radius,0,Math.PI*2);
-        rippleCtx.strokeStyle=`rgba(56,0,152,${r.alpha})`;
-        rippleCtx.lineWidth=r.lineWidth;
-        rippleCtx.stroke();
-      });
-      requestAnimationFrame(animateRipples);
-    }
-    animateRipples();
-  </script>
-
-
-</body></html>
+</body>
+</html>
