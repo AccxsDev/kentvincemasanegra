@@ -16,6 +16,7 @@ body {
   overflow: hidden; /* no scroll */
 }
 
+/* ---------- Header ---------- */
 header {
   display: flex;
   justify-content: space-between;
@@ -57,36 +58,17 @@ nav ul li a:hover {
   display: flex;
   width: 100vw;
   height: 100vh; /* full viewport height */
+  padding-top: 60px; /* header offset */
 }
 
-.intro-image {
+.text-area {
   flex: 1;
-  position: relative;
-  background: url('image/kent.jpg') center center / cover no-repeat;
-}
-
-.intro-image::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 60px; /* blurred left edge */
-  height: 100%;
-  background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0));
-  pointer-events: none;
-}
-
-/* Intro text overlay on left */
-.intro-text {
-  position: absolute;
-  top: 50%;
-  left: 50px; /* margin from left */
-  transform: translateY(-50%);
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  max-width: 500px;
-  z-index: 5;
+  justify-content: center;
+  padding-left: 50px;
+  gap: 20px;
+  max-width: 50%;
 }
 
 /* MY box */
@@ -95,33 +77,51 @@ nav ul li a:hover {
   font-size: 4rem;
   font-weight: bold;
   border: 3px solid #fff;
-  display: inline-block;
   padding: 20px 30px;
   text-align: center;
-  width: fit-content;
+  display: inline-block;
 }
 
-/* 11-Dakila */
+/* Paragraph beside MY */
+.intro-paragraph {
+  font-size: 1.1rem;
+  color: #ccc;
+  max-width: 65%;
+  line-height: 1.5;
+}
+
+/* 11-Dakila below MY */
 .dakila {
   font-family: 'Work Sans', sans-serif;
   font-size: 1.5rem;
-  margin-top: 5px;
   color: #fff;
 }
 
-/* Portfolio */
+/* PORTFOLIO below 11-Dakila */
 .portfolio {
   font-family: 'Times New Roman', serif;
   font-size: 5rem;
-  margin-top: 10px;
+  font-weight: bold;
+  color: #fff;
 }
 
-/* Paragraph */
-.intro-text p {
-  font-size: 1.1rem;
-  color: #ccc;
-  max-width: 500px;
-  margin-top: 20px;
+/* Right image area */
+.image-area {
+  flex: 1;
+  background: url('image/kent.jpg') center center / cover no-repeat;
+  position: relative;
+}
+
+/* Blurred left edge of image */
+.image-area::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50px;
+  height: 100%;
+  background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0));
+  pointer-events: none;
 }
 
 /* ---------- Footer ---------- */
@@ -174,11 +174,10 @@ footer {
     flex-direction: column;
   }
 
-  .intro-text {
-    position: static;
-    transform: none;
-    text-align: center;
-    margin: 30px;
+  .text-area {
+    max-width: 100%;
+    padding-left: 20px;
+    margin-bottom: 20px;
   }
 
   .portfolio {
@@ -191,6 +190,14 @@ footer {
 
   .dakila {
     font-size: 1.2rem;
+  }
+
+  .intro-paragraph {
+    font-size: 1rem;
+  }
+
+  .image-area {
+    height: 50vh;
   }
 }
 </style>
@@ -211,17 +218,23 @@ footer {
 </header>
 
 <section class="main-section">
-  <div class="intro-image"></div>
-  <div class="intro-text">
-    <div class="my-box">MY</div>
+  <!-- Left text -->
+  <div class="text-area">
+    <div style="display: flex; align-items: flex-start; gap: 20px;">
+      <div class="my-box">MY</div>
+      <p class="intro-paragraph">Hello! My name is Kent Vince S. Masanegra, a Grade 11 student who is passionate about learning and improving my skills. I am interested in using technology for schoolwork, communication, and creativity. Through ICT, I can easily research, create projects, and connect with others. I am continuously learning how to use technology responsibly and wisely. My goal is to use digital tools to help me succeed in my studies and future career.</p>
+    </div>
     <div class="dakila">11-Dakila</div>
-    <div class="portfolio">Portfolio</div>
-    <p>Hello! My name is Kent Vince S. Masanegra, a Grade 11 student who is passionate about learning and improving my skills. I am interested in using technology for schoolwork, communication, and creativity. Through ICT, I can easily research, create projects, and connect with others. I am continuously learning how to use technology responsibly and wisely. My goal is to use digital tools to help me succeed in my studies and future career.</p>
+    <div class="portfolio">PORTFOLIO</div>
   </div>
+
+  <!-- Right image -->
+  <div class="image-area"></div>
 </section>
 
 <footer>
-  © 2026 <strong>Accxs Creations</strong> · All rights reserved ·
+  © 2026 <strong>Accxs Creations</strong> ·
+  <a href="aboutsite.html" class="footer-link">About this Site</a>
   <div class="footer-socials">
     <a href="https://www.facebook.com/kent.vince.s.masanegra" target="_blank"><img src="image/facebook.png" alt="Facebook"></a>
     <a href="https://www.instagram.com/itsy.kevx" target="_blank"><img src="image/instagram.png" alt="Instagram"></a>
