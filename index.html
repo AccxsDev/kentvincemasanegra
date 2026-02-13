@@ -6,13 +6,7 @@
 <title>Kent Vince S. Masanegra | Portfolio</title>
 <link rel="icon" type="image/png" href="image/Accx_Logo.png">
 <style>
-  /* ---------- Global Styles ---------- */
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
+  * { box-sizing: border-box; margin:0; padding:0; }
   body {
     font-family: 'Arial', sans-serif;
     background-color: #000;
@@ -20,28 +14,22 @@
     line-height: 1.5;
   }
 
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-
   /* ---------- Header ---------- */
   header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 40px;
-    background: #111;
+    padding: 20px 50px;
+    background: #000;
+    border-bottom: 1px solid #111;
     position: sticky;
     top: 0;
     z-index: 1000;
-    border-bottom: 1px solid #222;
   }
 
   header h1 {
     font-size: 1.8rem;
     font-weight: bold;
-    letter-spacing: 1px;
   }
 
   nav ul {
@@ -52,6 +40,7 @@
 
   nav ul li a {
     font-size: 1rem;
+    color: #fff;
     transition: color 0.3s ease;
   }
 
@@ -62,51 +51,52 @@
   /* ---------- Intro Section ---------- */
   .intro-section {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     padding: 60px 5%;
     min-height: 80vh;
-    position: relative;
-    overflow: hidden;
+    gap: 50px;
   }
 
   .intro-text {
     max-width: 600px;
-    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   }
 
-  .intro-text h2 {
-    font-size: 3rem;
+  /* Square border for 'My' */
+  .intro-text .my-box {
+    font-size: 3.5rem;
     font-weight: bold;
-    color: #fff;
+    border: 3px solid #fff;
+    display: inline-block;
+    padding: 20px 30px;
+    text-align: center;
+    width: fit-content;
   }
 
-  .intro-text h3 {
+  .intro-text .dakila {
     font-size: 2rem;
-    font-weight: normal;
-    margin-top: 10px;
-    color: #a76fff;
+    color: #fff;
+    margin-left: 10px;
   }
 
-  .intro-text h1 {
-    font-size: 4rem;
-    font-weight: bold;
+  .intro-text .portfolio {
+    font-size: 3rem;
     text-decoration: underline;
-    margin-top: 15px;
-    color: #fff;
+    margin-top: 10px;
   }
 
   .intro-text p {
     font-size: 1.1rem;
-    margin-top: 20px;
     color: #ccc;
+    margin-top: 20px;
   }
 
   /* ---------- Portrait Image ---------- */
   .intro-image {
-    flex: 1 1 400px;
-    max-width: 500px;
+    flex: 1 1 500px;
     position: relative;
   }
 
@@ -114,36 +104,24 @@
     width: 100%;
     height: auto;
     display: block;
-    border-radius: 20px;
     object-fit: cover;
-    filter: blur(5px);
   }
 
-  .intro-image img::after {
+  /* Left side blur overlay */
+  .intro-image::before {
     content: '';
     position: absolute;
     left: 0;
     top: 0;
-    width: 50%;
+    width: 50px; /* width of blurred vertical line */
     height: 100%;
-    backdrop-filter: blur(10px);
-  }
-
-  /* ---------- Overlay actual image sharp part ---------- */
-  .intro-image .sharp {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 50%;
-    height: 100%;
-    background: url('image/kent.jpg') no-repeat right center;
-    background-size: cover;
-    border-radius: 20px;
+    background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0));
+    pointer-events: none;
   }
 
   /* ---------- Footer ---------- */
   footer {
-    background: #111;
+    background: #000;
     text-align: center;
     color: #aaa;
     font-size: 0.9rem;
@@ -153,7 +131,7 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 10px;
-    border-top: 1px solid #222;
+    border-top: 1px solid #111;
   }
 
   .footer-link {
@@ -187,31 +165,25 @@
   /* ---------- Responsive ---------- */
   @media (max-width: 900px) {
     .intro-section {
-      flex-direction: column-reverse;
+      flex-direction: column;
       text-align: center;
-      gap: 40px;
     }
 
-    .intro-text h2 {
-      font-size: 2.5rem;
+    .intro-text {
+      align-items: center;
     }
 
-    .intro-text h3 {
-      font-size: 1.8rem;
+    .intro-text .my-box, .intro-text .dakila, .intro-text .portfolio {
+      margin: 0;
     }
 
-    .intro-text h1 {
-      font-size: 3rem;
-    }
-
-    .intro-text p {
-      font-size: 1rem;
-    }
-
-    .intro-image .sharp {
+    .intro-image {
       width: 100%;
-      height: 300px;
-      background-position: center;
+      max-width: 400px;
+    }
+
+    .intro-image::before {
+      width: 30px;
     }
   }
 
@@ -236,14 +208,16 @@
   <!-- Intro Section -->
   <section class="intro-section">
     <div class="intro-text">
-      <h2>My</h2>
-      <h3>11-Dakila</h3>
-      <h1>Portfolio</h1>
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div class="my-box">My</div>
+        <div class="dakila">11-Dakila</div>
+      </div>
+      <div class="portfolio">Portfolio</div>
       <p>Hello! My name is Kent Vince S. Masanegra, a Grade 11 student who is passionate about learning and improving my skills. I am interested in using technology for schoolwork, communication, and creativity. Through ICT, I can easily research, create projects, and connect with others. I am continuously learning how to use technology responsibly and wisely. My goal is to use digital tools to help me succeed in my studies and future career.</p>
     </div>
+
     <div class="intro-image">
       <img src="image/kent.jpg" alt="Kent Vince S. Masanegra">
-      <div class="sharp"></div>
     </div>
   </section>
 
