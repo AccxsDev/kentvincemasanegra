@@ -64,6 +64,22 @@
   .profile-pic-link img{width:150px;height:150px;border-radius:50%;border:3px solid white;object-fit:cover;margin:0 auto;display:block;}
   .profile-info p{margin:8px 0;font-size:1rem; text-align:center;}
 
+  /* Hover effect on circular images */
+.profile-pic-link img,
+.family-list img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-pic-link img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 25px 7px rgba(167, 111, 255, 0.9);
+}
+
+.family-list img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px 4px rgba(255, 222, 89, 0.7);
+}
+
   .family h3{margin-bottom:15px;}
   .family-list{display:flex; justify-content:center; flex-wrap:wrap; gap:40px; margin-bottom:20px;}
   .family-list div{text-align:center; flex:1 1 200px; max-width:200px;}
@@ -168,6 +184,25 @@ footer{
   filter: drop-shadow(0 0 6px white);
 }
 
+.education-card {
+  background: rgba(255,255,255,0.05);
+  border: 2px solid #380098;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(56,0,152,0.6);
+  margin-bottom: 20px;
+  text-align: center;
+}
+.education-card h3 {
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+  color: #fff;
+}
+.education-card p {
+  margin: 8px 0;
+  font-size: 1rem;
+  color: #ddd;
+}
 
 </style>
 </head>
@@ -217,6 +252,14 @@ footer{
             </div>
           </div>
 
+<!-- Education Card -->
+<div class="education-card content-card">
+  <h3>Educational Background</h3>
+  <p><strong>Senior High School:</strong> Southpoint School — (Currently enrolled)</p>
+  <p><strong>Junior High School:</strong> Southpoint School — Graduated 2024-2025</p>
+  <p><strong>Elementary School:</strong> Kapitan Thomas Mounteverde Central Elementary School — Graduated 2019-2020</p>
+</div>
+
           <!-- Family Card -->
           <div class="family-card">
             <div class="family">
@@ -257,11 +300,7 @@ footer{
     <h3>Kent Vince S. Masanegra</h3>
 
     <p>
-      I am a dedicated and passionate individual with a strong sense of responsibility,
-      creativity, and perseverance. I strive to continuously grow both personally and
-      professionally, valuing integrity, hard work, and meaningful connections with people.
-      My journey is driven by faith, determination, and the desire to make a positive impact
-      in everything I do.
+      Hello! My name is Kent Vince S. Masanegra, a Grade 11 student who is passionate about learning and improving my skills. I am interested in using technology for schoolwork, communication, and creativity. Through ICT, I can easily research, create projects, and connect with others. I am continuously learning how to use technology responsibly and wisely. My goal is to use digital tools to help me succeed in my studies and future career.
     </p>
   </div>
 </div>
