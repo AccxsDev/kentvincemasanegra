@@ -143,6 +143,74 @@
   letter-spacing: 1px;
 }
 
+/* ---------- Circular Image Hover ---------- */
+.profile-pic-link img,
+.family-list img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 3px solid white; /* optional if you want a border */
+}
+.profile-pic-link img:hover,
+.family-list img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 25px 7px rgba(167, 111, 255, 0.8), 0 0 15px 3px rgba(255, 222, 89, 0.5);
+  cursor: pointer;
+}
+
+/* ---------- Card Hover Effect ---------- */
+.profile-card:hover,
+.family-card:hover,
+.education-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(167, 111, 255, 0.5), 0 0 20px rgba(255, 222, 89, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ---------- Education Card Design ---------- */
+.education-card {
+  background: linear-gradient(145deg, #380098, #5c00cc);
+  border: 2px solid #a76fff;
+  border-radius: 20px;
+  padding: 25px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 0 15px rgba(167,111,255,0.4);
+}
+
+.education-card h3 {
+  font-size: 1.7rem;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+  text-shadow: 0 0 5px #fff, 0 0 10px #a76fff80;
+}
+
+/* Individual Education Entries */
+.education-entry {
+  background: rgba(255, 255, 255, 0.05);
+  margin: 12px 0;
+  padding: 15px 20px;
+  border-radius: 12px;
+  border-left: 4px solid #a76fff;
+  text-align: left;
+  font-size: 1.05rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.education-entry:hover {
+  transform: translateX(5px);
+  box-shadow: 0 8px 20px rgba(167,111,255,0.4);
+}
+.education-entry strong {
+  color: #ffd600;
+  margin-right: 8px;
+}
+.education-entry span {
+  color: #ccc;
+  font-style: italic;
+}
+
 /* ---------- Footer Layout ---------- */
 
 footer{
@@ -255,11 +323,23 @@ footer{
 <!-- Education Card -->
 <div class="education-card content-card">
   <h3>Educational Background</h3>
-  <p><strong>Senior High School:</strong> Southpoint School — (Currently enrolled)</p>
-  <p><strong>Junior High School:</strong> Southpoint School — Graduated 2024-2025</p>
-  <p><strong>Elementary School:</strong> Kapitan Thomas Mounteverde Central Elementary School — Graduated 2019-2020</p>
-</div>
 
+  <p>
+    <span class="school-name">Senior High School: Southpoint School</span> — 
+    <span class="school-status enrolled">Currently Enrolled</span>
+  </p>
+
+  <p>
+    <span class="school-name">Junior High School: Southpoint School</span> — 
+    <span class="school-status graduated">Graduated 2024-2025</span>
+  </p>
+
+  <p>
+    <span class="school-name">Elementary School: Kapitan Thomas Mounteverde Central Elementary School</span> — 
+    <span class="school-status graduated">Graduated 2019-2020</span>
+  </p>
+</div>
+          
           <!-- Family Card -->
           <div class="family-card">
             <div class="family">
