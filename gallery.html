@@ -171,6 +171,46 @@ footer:hover {
   #starsCanvas { z-index: 0; }
   #rippleCanvas { z-index:0; }
 
+/* ---------- Footer Layout ---------- */
+
+footer{
+  position:relative;
+  z-index:1;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+
+  text-align:center;
+  color:#aaa;
+  font-size:0.9rem;
+  margin-top:60px;
+  margin-bottom:30px;
+}
+
+/* social icons beside text */
+.footer-socials{
+  display:flex;
+  gap:10px;
+  margin-left:8px;
+}
+
+.footer-socials img{
+  width:18px;
+  height:18px;
+  opacity:0.8;
+  cursor:pointer;
+  transition:.25s;
+}
+
+/* glow hover effect */
+.footer-socials img:hover{
+  opacity:1;
+  transform:scale(1.25);
+  filter: drop-shadow(0 0 6px white);
+}
 </style>
 </head>
 <body>
