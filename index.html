@@ -62,7 +62,13 @@
     border-radius:15px; padding:20px; box-shadow:0 0 10px rgba(56,0,152,0.6); margin-bottom:20px;
   }
   .profile-pic-link img{width:150px;height:150px;border-radius:50%;border:3px solid white;object-fit:cover;margin:0 auto;display:block;}
-  .profile-info p{margin:8px 0;font-size:1rem; text-align:center;}
+
+  /* Profile info: left align text */
+.profile-info p {
+  margin: 8px 0;
+  font-size: 1rem;
+  text-align: left;  /* changed from center to left */
+}
 
   /* Hover effect on circular images */
 .profile-pic-link img,
@@ -262,14 +268,29 @@ footer{
   text-align: center;
 }
 .education-card h3 {
-  margin-bottom: 15px;
-  font-size: 1.5rem;
+  text-align: center;   /* keeps title centered */
+  font-weight: normal;  /* removes bold */
   color: #fff;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
 }
+
+/* Education card: left align text */
 .education-card p {
-  margin: 8px 0;
-  font-size: 1rem;
+  margin: 12px 0;
+  font-size: 1.05rem;
   color: #ddd;
+  text-align: left;  /* added left alignment */
+}
+
+.school-status.graduated {
+  color: #ffd600;  /* gold-ish color for graduated */
+  font-style: italic;
+}
+
+.school-status.enrolled {
+  color: #00ffcc;  /* greenish color for currently enrolled */
+  font-style: italic;
 }
 
 </style>
