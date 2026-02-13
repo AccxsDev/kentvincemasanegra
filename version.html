@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="images/Accx_Logo.png">
+<title>Version History</title>
+
+<style>
+  /* ---------- Body & Background ---------- */
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    color: #fff;
+    background: radial-gradient(circle at top left, #380098, #000);
+    background-size: cover;
+    background-attachment: fixed;
+    animation: gradientMove 15s infinite alternate;
+  }
+  @keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+  }
+  canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ---------- Version Container ---------- */
+  .version-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.55);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 1002;
+  }
+
+  .version-header {
+  padding: 20px;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  color: #ffde59;
+  text-shadow: 0 0 8px #ffffffaa, 0 0 16px #ffffff55, 0 0 24px #ffffff33;
+  animation: neonGlow 2s infinite alternate;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+  @keyframes neonGlow {
+    0% { text-shadow: 0 0 6px #ffde59aa, 0 0 10px #ffde59aa, 0 0 20px #a76fff55; }
+    50% { text-shadow: 0 0 12px #ffde59ff, 0 0 18px #ffde59ff, 0 0 30px #a76fffaa; }
+    100% { text-shadow: 0 0 6px #ffde59aa, 0 0 10px #ffde59aa, 0 0 20px #a76fff55; }
+  }
+
+  .version-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px 40px;
+    scrollbar-width: thin;
+    scrollbar-color: #a76fff55 transparent;
+  }
+
+  .version-content::-webkit-scrollbar {
+    width: 10px;
+  }
+  .version-content::-webkit-scrollbar-thumb {
+    background: #a76fff55;
+    border-radius: 5px;
+  }
+  .version-content::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .version {
+    margin-bottom: 25px;
+    line-height: 1.6;
+    font-size: 1rem;
+    background: rgba(0,0,0,0.35);
+    border-left: 4px solid #a76fff;
+    border-radius: 10px;
+    padding: 15px 20px;
+    transition: all 0.4s ease;
+    position: relative;
+    box-shadow: 0 0 10px rgba(167,111,255,0.3);
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .version.show {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.6s ease;
+  }
+
+  .version:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(167,111,255,0.7);
+    background: rgba(0,0,0,0.55);
+  }
+
+  /* Particle effect on hover */
+  .version:hover::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: calc(100% + 10px);
+    height: calc(100% + 10px);
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(167,111,255,0.5), 0 0 25px rgba(255,255,255,0.3);
+    pointer-events: none;
+    animation: glowPulse 1.5s infinite alternate;
+  }
+  @keyframes glowPulse {
+    0% { box-shadow: 0 0 15px rgba(167,111,255,0.3), 0 0 25px rgba(255,255,255,0.1); }
+    100% { box-shadow: 0 0 20px rgba(167,111,255,0.7), 0 0 35px rgba(255,255,255,0.3); }
+  }
+
+  .version strong {
+    font-size: 1.2rem;
+    color: #a76fff;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .version .date {
+    font-size: 0.95rem;
+    color: #ccc;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .version ul {
+    padding-left: 20px;
+    margin-top: 5px;
+  }
+
+  .version li {
+    margin-bottom: 6px;
+  }
+
+  /* ---------- Footer ---------- */
+  footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.95rem;
+    color: #ccc;
+    background: rgba(0,0,0,0.45);
+    border-top: 1px solid rgba(255,255,255,0.2);
+    box-shadow: inset 0 1px 5px rgba(255,255,255,0.05);
+  }
+
+  footer a.footer-link {
+    color: #ccc;
+    text-decoration: none;
+    margin: 0 5px;
+  }
+
+  footer a.footer-link:hover {
+    color: #a76fff;
+  }
+
+  @media screen and (max-width: 768px) {
+    .version-header { font-size: 1.6rem; }
+    .version-content { padding: 15px 20px; }
+    footer { font-size: 0.85rem; }
+    .version { padding: 12px 15px; font-size: 0.95rem; }
+  }
+
+
+/* ---------- Back Button ---------- */
+.back-btn {
+  position: absolute;
+  left: 20px;
+  background: transparent;
+  border: 2px solid #a76fff;
+  color: #ffde59;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(167,111,255,0.6);
+  transition: all 0.3s ease;
+  touch-action: manipulation;
+}
+
+.back-btn:hover {
+  background: rgba(167,111,255,0.2);
+  box-shadow: 0 0 15px rgba(167,111,255,0.9);
+  transform: scale(1.05);
+}
+
+.header-title {
+  pointer-events: none;
+}
+
+/* ---------- Small Phones ---------- */
+@media screen and (max-width: 480px) {
+  .version-header {
+    font-size: 1.4rem;
+    padding: 15px;
+  }
+
+  .back-btn {
+    left: 10px;
+    padding: 5px 10px;
+    font-size: 0.85rem;
+  }
+
+  .version-content {
+    padding: 12px;
+  }
+
+  .version {
+    font-size: 0.9rem;
+    padding: 10px 12px;
+  }
+
+  .version strong {
+    font-size: 1.05rem;
+  }
+
+  footer {
+    padding: 15px 10px;
+    font-size: 0.8rem;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<canvas id="starsCanvas"></canvas>
+<canvas id="rippleCanvas"></canvas>
+
+<div class="version-page">
+  <div class="version-header">
+   <button class="back-btn" aria-label="Go back"
+    onclick="window.history.length > 1 ? history.back() : location.href='index.html'">
+    ← Back
+  </button>
+   <span class="header-title">Version History</span>
+  </div>
+  <div class="version-content">
+    <!-- Versions -->
+    <div class="version" id="v0.0.0">
+      <strong>v0.0.0</strong>
+      <span class="date">June 2025</span>
+      <ul>
+        <li>Initial site creation with basic HTML structure.</li>
+        <li>First public release, mostly text content.</li>
+        <li>Foundation for profile and family info set.</li>
+      </ul>
+    </div>
+
+    <div class="version" id="v0.0.1">
+      <strong>v0.0.1</strong>
+      <span class="date">June 2025</span>
+      <ul>
+        <li>Added basic CSS styling and typography.</li>
+        <li>Family section layout introduced.</li>
+        <li>Improved content readability.</li>
+      </ul>
+    </div>
+
+    <div class="version" id="v0.0.2">
+      <strong>v0.0.2</strong>
+      <span class="date">July 2025</span>
+      <ul>
+        <li>Enhanced typography, spacing, alignment.</li>
+        <li>Basic JS navigation added.</li>
+        <li>Improved HTML semantics.</li>
+      </ul>
+    </div>
+
+    <div class="version" id="v0.0.3">
+      <strong>v0.0.3</strong>
+      <span class="date">August 2025</span>
+      <ul>
+        <li>Modals for family members and profile images introduced.</li>
+        <li>Subtle shadows and rounded borders added.</li>
+        <li>Tablet responsiveness improved.</li>
+      </ul>
+    </div>
+
+    <div class="version" id="v0.0.4">
+      <strong>v0.0.4</strong>
+      <span class="date">September 2025</span>
+      <ul>
+        <li>Header and sidebar navigation implemented.</li>
+        <li>Responsive adjustments for mobile & tablet.</li>
+        <li>Optimized layout for readability.</li>
+      </ul>
+    </div>
+
+    <div class="version" id="v0.0.5">
+      <strong>v0.0.5</strong>
+      <span class="date">October 2025</span>
+      <ul>
+        <li>Ripple effect animation on mouse movement added.</li>
+        <li>Smooth animations for interactive elements.</li>
+        <li>Minor visual consistency improvements.</li>
+      </ul>
+    </div>
+
+    <div class="version" id="v0.0.6">
+      <strong>v0.0.6</strong>
+      <span class="date">November 2025</span>
+      <ul>
+        <li>Starfield and meteor background animations added.</li>
+        <li>Canvas performance optimized.</li>
+        <li>Visual harmony improved.</li>
+      </ul>
+    </div>
+
+    <div class="version" id="v0.0.7">
+      <strong>v0.0.7</strong>
+      <span class="date">November 2025</span>
+      <ul>
+        <li>Layout refined for smaller screens.</li>
+        <li>Modal interactions improved.</li>
+        <li>Hover & animation effects enhanced.</li>
+      </ul>
+    </div>
+
+    <div class="version" id="v0.0.8">
+      <strong>v0.0.8</strong>
+      <span class="date">December 2025</span>
+      <ul>
+        <li>Finalized animations: stars, ripple, gradient background.</li>
+        <li>Full-screen version history with scrollable content.</li>
+        <li>Footer inside container with natural styling.</li>
+        <li>Hover animations & glowing effects applied to version cards.</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+   © 2025 – 2026 <strong>Accxs Creations</strong> · All rights reserved ·
+   <a href="version.html" class="footer-link">v0.0.8</a> ·
+   <a href="terms.html" class="footer-link">Terms & Privacy</a>
+  </footer>
+</div>
+
+<script>
+  // ---------- Scroll reveal animation ----------
+  const versions = document.querySelectorAll('.version');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) {
+        entry.target.classList.add('show');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  versions.forEach(v => observer.observe(v));
+
+  // ---------- Stars & Meteor ----------
+  const starsCanvas = document.getElementById('starsCanvas');
+  const starsCtx = starsCanvas.getContext('2d');
+  let stars = [], meteor = null;
+
+  function resizeStarsCanvas() {
+    starsCanvas.width = window.innerWidth;
+    starsCanvas.height = window.innerHeight;
+    generateStars();
+  }
+  function generateStars() {
+    stars = [];
+    for(let i=0;i<200;i++){
+      stars.push({x:Math.random()*starsCanvas.width,y:Math.random()*starsCanvas.height,alpha:Math.random()*0.7+0.3,radius:Math.random()*1.5+0.5,flickerSpeed:Math.random()*0.05+0.02});
+    }
+  }
+  function spawnMeteor(){ meteor={x:Math.random()*starsCanvas.width,y:-20,vx:-(Math.random()*4+2),vy:Math.random()*2+2,alpha:1}; }
+  function drawMeteor(){
+    if(!meteor)return;
+    starsCtx.save();
+    const grad = starsCtx.createLinearGradient(meteor.x,meteor.y,meteor.x-meteor.vx*10,meteor.y-meteor.vy*10);
+    grad.addColorStop(0,`rgba(255,255,255,${meteor.alpha})`);
+    grad.addColorStop(1,'rgba(255,255,255,0)');
+    starsCtx.strokeStyle = grad;
+    starsCtx.lineWidth=2;
+    starsCtx.beginPath();
+    starsCtx.moveTo(meteor.x,meteor.y);
+    starsCtx.lineTo(meteor.x-meteor.vx*20,meteor.y-meteor.vy*20);
+    starsCtx.stroke();
+    starsCtx.restore();
+  }
+  function animateStars(){
+    starsCtx.clearRect(0,0,starsCanvas.width,starsCanvas.height);
+    stars.forEach(star=>{
+      star.alpha+=star.flickerSpeed*(Math.random()<0.5?-1:1);
+      star.alpha=Math.max(0.1,Math.min(1,star.alpha));
+      starsCtx.beginPath();
+      starsCtx.arc(star.x,star.y,star.radius,0,Math.PI*2);
+      starsCtx.fillStyle=`rgba(255,255,255,${star.alpha})`;
+      starsCtx.fill();
+    });
+    if(meteor){
+      meteor.x+=meteor.vx;
+      meteor.y+=meteor.vy;
+      meteor.alpha-=0.01;
+      drawMeteor();
+      if(meteor.alpha<=0 || meteor.x<-50 || meteor.y>starsCanvas.height+50){
+        meteor=null;
+        setTimeout(spawnMeteor,Math.random()*5000+3000);
+      }
+    }
+    requestAnimationFrame(animateStars);
+  }
+  window.addEventListener('resize',resizeStarsCanvas);
+  resizeStarsCanvas();
+  animateStars();
+  setTimeout(spawnMeteor,3000);
+
+  // ---------- Ripple ----------
+  const rippleCanvas = document.getElementById('rippleCanvas');
+  const rippleCtx = rippleCanvas.getContext('2d');
+  let ripples=[];
+  function resizeRippleCanvas(){ rippleCanvas.width=window.innerWidth; rippleCanvas.height=window.innerHeight; }
+  window.addEventListener('resize',resizeRippleCanvas);
+  resizeRippleCanvas();
+  window.addEventListener('mousemove',e=>{
+    ripples.push({x:e.clientX,y:e.clientY,radius:0,alpha:0.3,lineWidth:1+Math.random()});
+    if(ripples.length>20) ripples.shift();
+  });
+  function animateRipples(){
+    rippleCtx.clearRect(0,0,rippleCanvas.width,rippleCanvas.height);
+    ripples.forEach((r,i)=>{
+      r.radius+=1.5;
+      r.alpha-=0.007;
+      if(r.alpha<=0){ ripples.splice(i,1); return; }
+      rippleCtx.beginPath();
+      rippleCtx.arc(r.x,r.y,r.radius,0,Math.PI*2);
+      rippleCtx.strokeStyle=`rgba(56,0,152,${r.alpha})`;
+      rippleCtx.lineWidth=r.lineWidth;
+      rippleCtx.stroke();
+    });
+    requestAnimationFrame(animateRipples);
+  }
+  animateRipples();
+</script>
+</body>
+</html>
