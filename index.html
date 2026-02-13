@@ -5,188 +5,134 @@
 <link rel="icon" type="image/png" href="images/Accx_Logo.png">
 <title>Kent Vince S. Masanegra</title>
 <style>
-/* ---------- Body & Background ---------- */
-body{
-  margin:0;
-  font-family: Arial, sans-serif;
+  /* ---------- Body & Background ---------- */
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: radial-gradient(circle at top left, #380098, black);
+    background-size: cover;
+    background-attachment: fixed;
+    color: white;
+    overflow-x: hidden;
+  }
 
-  /* deep blue gradient instead of purple */
-  background:
-    radial-gradient(circle at top left, #0049B7 0%, #001d4f 40%, #000 100%);
+  /* ---------- Header ---------- */
+  header {
+    display:flex; justify-content:space-between; align-items:center;
+    padding:15px; background: rgba(0,0,0,0.5);
+    position: sticky; top:0; z-index:1002;
+  }
+  header h1 {
+    font-size:1.8rem; margin:0; color:#fff;
+    text-shadow:0 0 5px #ffffff80,0 0 10px #ffffff40,0 0 20px #a76fff50;
+    animation:flickerText 3s infinite;
+  }
+  @keyframes flickerText {
+    0%,19%,21%,23%,25%,54%,56%,100%{opacity:1; text-shadow:0 0 6px #fff,0 0 10px #fff,0 0 20px #a76fff80,0 0 30px #38009890;}
+    20%,22%,55%{opacity:0.7; text-shadow:0 0 3px #fff,0 0 8px #a76fff40;}
+    24%{opacity:0.4; text-shadow:0 0 2px #fff,0 0 5px #a76fff20;}
+  }
+  .hamburger { font-size:1.8rem; cursor:pointer; user-select:none; }
 
-  background-attachment: fixed;
-  color:white;
-  overflow-x:hidden;
+  /* ---------- Sidebar ---------- */
+  #sidebarOverlay {
+    position: fixed; top:0; left:0; width:100%; height:100%;
+    background: rgba(0,0,0,0.4); display:none; z-index:1000;
+  }
+  #sidebar {
+    width:220px; max-width:80%; background: rgba(0,0,0,0.9);
+    color:white; position:fixed; top:0; right:-220px; height:100%;
+    padding-top:60px; transition:right 0.3s ease; z-index:1001;
+  }
+  #sidebar.open{right:0;}
+  #sidebar ul{list-style:none; padding:0; margin:0;}
+  #sidebar ul li a{
+    display:block; padding:12px 20px; color:white; text-decoration:none; text-align:left;
+  }
+  #sidebar ul li a:hover{background: rgba(255,255,255,0.15);}
+
+  /* ---------- Content Cards ---------- */
+  #blur-container {
+    transition: filter 0.3s ease;
+  }
+
+  .content-card{padding:20px; max-width:1000px; margin:20px auto; position:relative; z-index:1; text-align:center;}
+  .profile-card, .family-card{
+    background: rgba(255,255,255,0.05); border:2px solid #380098;
+    border-radius:15px; padding:20px; box-shadow:0 0 10px rgba(56,0,152,0.6); margin-bottom:20px;
+  }
+  .profile-pic-link img{width:150px;height:150px;border-radius:50%;border:3px solid white;object-fit:cover;margin:0 auto;display:block;}
+  .profile-info p{margin:8px 0;font-size:1rem; text-align:center;}
+
+  .family h3{margin-bottom:15px;}
+  .family-list{display:flex; justify-content:center; flex-wrap:wrap; gap:40px; margin-bottom:20px;}
+  .family-list div{text-align:center; flex:1 1 200px; max-width:200px;}
+  .family-list img{width:100px; height:100px; border-radius:50%; border:2px solid white; object-fit:cover;}
+  .family-list p{font-weight:bold;margin-top:8px;}
+
+  /* ---------- Modals ---------- */
+  .modal-overlay {
+    display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+    background: rgba(0,0,0,0.7); justify-content:center; align-items:center; z-index:2000;
+  }
+  .modal-box {
+    background: rgba(0,0,0,0.9); padding:20px; border-radius:15px;
+    max-width:500px; width:90%; color:white; text-align:center;
+    box-shadow:0 0 20px #a76fff; position:relative;
+  }
+  .modal-close {position:absolute; top:10px; right:15px; font-size:1.5rem; cursor:pointer;}
+
+  body.modal-open #blur-container {
+    filter: blur(6px);
+  }
+  body.modal-open {
+    overflow: hidden;
+  }
+
+  /* ---------- Background canvases ---------- */
+  #starsCanvas, #rippleCanvas{position:fixed; top:0; left:0; width:100vw; height:100vh; pointer-events:none;}
+  #starsCanvas{z-index:0;} #rippleCanvas{z-index:0;}
+
+  /* ---------- Footer ---------- */
+  footer{position:relative; z-index:1; text-align:center; color:#aaa; font-size:0.9rem; margin-top:60px; margin-bottom:30px; opacity:0.9; transition: opacity 0.3s ease, color 0.3s ease;}
+  footer:hover{opacity:1;color:gold;text-shadow:0 0 8px gold;}
+
+.footer-link {
+  color: #aaa;
+  text-decoration: none;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
-/* ---------- Header ---------- */
-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:15px 20px;
-
-  /* glass look */
-  background: rgba(0,0,0,0.45);
-  backdrop-filter: blur(8px);
-
-  position:sticky;
-  top:0;
-  z-index:1002;
+.footer-link:hover {
+  color: gold;
+  text-shadow: 0 0 8px gold;
+  text-decoration: underline;
 }
 
-header h1{
-  font-size:1.8rem;
-  margin:0;
-  color:#FFF685;
-
-  text-shadow:
-    0 0 6px #FFF685,
-    0 0 12px #FF1D58,
-    0 0 25px #00DDFF;
-
-  animation:flickerText 3s infinite;
+.profile-info a {
+  color: white;
+  text-decoration: none;
 }
 
-/* flicker stays */
-@keyframes flickerText{
-  0%,100%{opacity:1}
-  50%{opacity:.85}
+.profile-info a:hover {
+  text-decoration: underline;
 }
 
-.hamburger{
-  font-size:1.8rem;
-  cursor:pointer;
-  color:#00DDFF;
-}
-
-/* ---------- Sidebar ---------- */
-#sidebar{
-  width:220px;
-  max-width:80%;
-  background: rgba(0,0,0,0.9);
-  backdrop-filter: blur(10px);
-  position:fixed;
-  top:0;
-  right:-220px;
-  height:100%;
-  transition:right .3s;
-  z-index:1001;
-}
-
-#sidebar.open{right:0;}
-
-#sidebar a{
-  color:#FFF685;
-  padding:12px 20px;
-  display:block;
-  text-decoration:none;
-}
-
-#sidebar a:hover{
-  background:#FF1D58;
-  color:white;
-}
-
-/* ---------- Cards (Glass style) ---------- */
-.profile-card,
-.family-card{
-  background: rgba(255,255,255,0.06);
-  backdrop-filter: blur(14px);
-
-  border:1px solid rgba(255,255,255,0.15);
-  border-radius:18px;
-
-  box-shadow:
-    0 0 20px #0049B7aa,
-    0 0 40px #00DDFF33;
-
-  padding:25px;
-  margin-bottom:25px;
-
-  transition:.3s;
-}
-
-/* glow on hover */
-.profile-card:hover,
-.family-card:hover{
-  transform: translateY(-5px);
-  box-shadow:
-    0 0 25px #00DDFF,
-    0 0 50px #FF1D58;
-}
-
-/* ---------- Profile ---------- */
 .profile-name{
-  font-size:2.1rem;
-  font-weight:bold;
-  color:#FFF685;
-
-  text-shadow:
-    0 0 8px #FF1D58,
-    0 0 18px #00DDFF;
-
-  margin-bottom:15px;
-}
-
-.profile-pic-link img{
-  width:150px;
-  height:150px;
-  border-radius:50%;
-
-  border:3px solid #00DDFF;
-  box-shadow:0 0 15px #00DDFF;
-}
-
-.profile-info p{
-  margin:8px 0;
-}
-
-/* ---------- Family ---------- */
-.family-list img{
-  width:100px;
-  height:100px;
-  border-radius:50%;
-
-  border:2px solid #FF1D58;
-  box-shadow:0 0 12px #FF1D58;
-}
-
-/* ---------- Links ---------- */
-.profile-info a{
-  color:#00DDFF;
-  text-decoration:none;
-}
-
-.profile-info a:hover{
-  color:#FFF685;
-}
-
-/* ---------- Modal ---------- */
-.modal-box{
-  background: rgba(0,0,0,0.9);
-  backdrop-filter: blur(10px);
-
-  border:1px solid #FF1D58;
-  box-shadow:0 0 25px #FF1D58;
-
-  border-radius:15px;
-}
-
-/* ---------- Footer ---------- */
-footer{
-  color:#FFF685;
-  opacity:.85;
-}
-
-footer:hover{
-  color:#00DDFF;
-  text-shadow:0 0 8px #00DDFF;
+  font-size: 1.9rem;
+  font-weight: bold;
+  margin-bottom: 12px;
+  text-align: center;
+  color: white;
+  letter-spacing: 1px;
 }
 
 </style>
 </head>
 <body>
+<canvas id="starsCanvas" width="273" height="740"></canvas>
+<canvas id="rippleCanvas" width="273" height="740"></canvas>
+
   <!-- Header -->
   <header>
     <h1>About Me</h1>
@@ -331,6 +277,99 @@ footer:hover{
       if(e.target===modal) closeModal(modal.id)
     });
   });
+
+    // Starfield + Meteor
+    const starsCanvas = document.getElementById('starsCanvas');
+    const starsCtx = starsCanvas.getContext('2d');
+    let stars = [], meteor = null;
+
+    function resizeStarsCanvas() {
+      starsCanvas.width = window.innerWidth;
+      starsCanvas.height = window.innerHeight;
+      generateStars();
+    }
+
+    function generateStars() {
+      stars = [];
+      for (let i=0; i<200; i++) {
+        stars.push({x:Math.random()*starsCanvas.width, y:Math.random()*starsCanvas.height, alpha:Math.random()*0.7+0.3, radius:Math.random()*1.5+0.5, flickerSpeed:Math.random()*0.05+0.02});
+      }
+    }
+
+    function drawMeteor() {
+      if (!meteor) return;
+      starsCtx.save();
+      const grad = starsCtx.createLinearGradient(meteor.x, meteor.y, meteor.x - meteor.vx*10, meteor.y - meteor.vy*10);
+      grad.addColorStop(0, `rgba(255,255,255,${meteor.alpha})`);
+      grad.addColorStop(1, `rgba(255,255,255,0)`);
+      starsCtx.strokeStyle = grad;
+      starsCtx.lineWidth = 2;
+      starsCtx.beginPath();
+      starsCtx.moveTo(meteor.x, meteor.y);
+      starsCtx.lineTo(meteor.x - meteor.vx * 20, meteor.y - meteor.vy * 20);
+      starsCtx.stroke();
+      starsCtx.restore();
+    }
+
+    function animateStars() {
+      starsCtx.clearRect(0,0,starsCanvas.width,starsCanvas.height);
+      stars.forEach(star => {
+        star.alpha += star.flickerSpeed*(Math.random()<0.5?-1:1);
+        star.alpha = Math.min(1, Math.max(0.1, star.alpha));
+        starsCtx.beginPath();
+        starsCtx.arc(star.x, star.y, star.radius, 0, Math.PI*2);
+        starsCtx.fillStyle = `rgba(255,255,255,${star.alpha})`;
+        starsCtx.fill();
+      });
+      if (meteor) {
+        meteor.x += meteor.vx;
+        meteor.y += meteor.vy;
+        meteor.alpha -= 0.01;
+        drawMeteor();
+        if (meteor.alpha<=0 || meteor.x<-50 || meteor.y>starsCanvas.height+50) {
+          meteor=null;
+          setTimeout(spawnMeteor, Math.random()*5000+3000);
+        }
+      }
+      requestAnimationFrame(animateStars);
+    }
+
+    function spawnMeteor() {
+      meteor={x:Math.random()*starsCanvas.width,y:-20,vx:-(Math.random()*4+2),vy:Math.random()*2+2,alpha:1};
+    }
+
+    window.addEventListener('resize', resizeStarsCanvas);
+    resizeStarsCanvas();
+    animateStars();
+    setTimeout(spawnMeteor,3000);
+
+    // Ripple effect
+    const rippleCanvas = document.getElementById('rippleCanvas');
+    const rippleCtx = rippleCanvas.getContext('2d');
+    let ripples=[];
+    function resizeRippleCanvas() { rippleCanvas.width=window.innerWidth; rippleCanvas.height=window.innerHeight; }
+    window.addEventListener('resize', resizeRippleCanvas);
+    resizeRippleCanvas();
+    window.addEventListener('mousemove', (e)=>{
+      ripples.push({x:e.clientX, y:e.clientY, radius:0, alpha:0.3, lineWidth:1+Math.random()});
+      if(ripples.length>20) ripples.shift();
+    });
+    function animateRipples() {
+      rippleCtx.clearRect(0,0,rippleCanvas.width,rippleCanvas.height);
+      ripples.forEach((r,i)=>{
+        r.radius+=1.5;
+        r.alpha-=0.007;
+        if(r.alpha<=0){ ripples.splice(i,1); return; }
+        rippleCtx.beginPath();
+        rippleCtx.arc(r.x,r.y,r.radius,0,Math.PI*2);
+        rippleCtx.strokeStyle=`rgba(56,0,152,${r.alpha})`;
+        rippleCtx.lineWidth=r.lineWidth;
+        rippleCtx.stroke();
+      });
+      requestAnimationFrame(animateRipples);
+    }
+    animateRipples();
   </script>
- </body>
-</html>
+
+
+</body></html>
