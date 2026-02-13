@@ -96,15 +96,22 @@
     margin: 0 auto 40px auto;
     position: relative; z-index: 1;
   }
-  .gallery-grid img {
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-  }
-  .gallery-grid img:hover { transform: scale(1.05); }
+  /* Each gallery item container */
+.gallery-grid img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect for image container */
+.gallery-grid img:hover {
+  transform: translateY(-5px) scale(1.05); /* slight lift + zoom */
+  box-shadow: 0 10px 25px rgba(167, 111, 255, 0.6), 0 0 15px rgba(255, 222, 89, 0.5);
+  border: 2px solid #a76fff; /* optional glowing border */
+}
 
   .modal {
     display: none;
